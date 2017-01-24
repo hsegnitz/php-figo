@@ -44,7 +44,7 @@ class HttpsRequest {
         stream_context_set_option($context, "ssl", "cafile", dirname(__FILE__).DIRECTORY_SEPARATOR."ca-bundle.crt");
         stream_context_set_option($context, "ssl", "verify_peer", true);
         stream_context_set_option($context, "ssl", "capture_peer_cert", true);
-        stream_context_set_option($context, "ssl", "crypto_method", "STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT");
+        stream_context_set_option($context, "ssl", "crypto_method", STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT);
 
         $fp = stream_socket_client("ssl://".Config::$API_ENDPOINT.":443/", $errno, $errstr, 60, STREAM_CLIENT_CONNECT, $context);
         if (!$fp) {
